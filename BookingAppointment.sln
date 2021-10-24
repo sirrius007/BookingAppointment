@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAppointment", "BookingAppointment\BookingAppointment.csproj", "{017CE637-C7E7-4BA0-9BE0-871185579D59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{492F38B2-A757-48DF-B7F2-FCBFFA340D3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAppointment.Domain.Core", "BookingAppointment.Domain.Core\BookingAppointment.Domain.Core.csproj", "{153606B4-859D-47B6-B5C4-E5EB91977405}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAppointment.Domain.Interfaces", "BookingAppointment.Domain.Interfaces\BookingAppointment.Domain.Interfaces.csproj", "{EEF3972B-9998-4A7A-8CD9-AA40B4544466}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EE582E8D-9C57-4598-953C-B4B9E6919EF0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingAppointment.Infrastructure.Data", "BookingAppointment.Infrastructure.Data\BookingAppointment.Infrastructure.Data.csproj", "{57C58D8B-D21B-422E-A722-4B7F7D09101B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{E6713808-0B7A-4B70-B2A0-ABEC49D85767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingAppointment.Business.Services", "BookingAppointment.Business.Services\BookingAppointment.Business.Services.csproj", "{6E9AC645-6B54-4969-8BED-C17829F3C677}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{017CE637-C7E7-4BA0-9BE0-871185579D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017CE637-C7E7-4BA0-9BE0-871185579D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017CE637-C7E7-4BA0-9BE0-871185579D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017CE637-C7E7-4BA0-9BE0-871185579D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{153606B4-859D-47B6-B5C4-E5EB91977405}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{153606B4-859D-47B6-B5C4-E5EB91977405}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{153606B4-859D-47B6-B5C4-E5EB91977405}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{153606B4-859D-47B6-B5C4-E5EB91977405}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF3972B-9998-4A7A-8CD9-AA40B4544466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF3972B-9998-4A7A-8CD9-AA40B4544466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF3972B-9998-4A7A-8CD9-AA40B4544466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF3972B-9998-4A7A-8CD9-AA40B4544466}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C58D8B-D21B-422E-A722-4B7F7D09101B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C58D8B-D21B-422E-A722-4B7F7D09101B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C58D8B-D21B-422E-A722-4B7F7D09101B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C58D8B-D21B-422E-A722-4B7F7D09101B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E9AC645-6B54-4969-8BED-C17829F3C677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E9AC645-6B54-4969-8BED-C17829F3C677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E9AC645-6B54-4969-8BED-C17829F3C677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E9AC645-6B54-4969-8BED-C17829F3C677}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{153606B4-859D-47B6-B5C4-E5EB91977405} = {492F38B2-A757-48DF-B7F2-FCBFFA340D3B}
+		{EEF3972B-9998-4A7A-8CD9-AA40B4544466} = {492F38B2-A757-48DF-B7F2-FCBFFA340D3B}
+		{57C58D8B-D21B-422E-A722-4B7F7D09101B} = {EE582E8D-9C57-4598-953C-B4B9E6919EF0}
+		{6E9AC645-6B54-4969-8BED-C17829F3C677} = {E6713808-0B7A-4B70-B2A0-ABEC49D85767}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2240195E-E819-4666-9BE1-0EB974B39DB0}
+	EndGlobalSection
+EndGlobal
