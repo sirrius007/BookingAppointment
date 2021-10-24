@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.Domain.Interfaces
 {
-    public interface IPatientRepository<T> : IDisposable
-        where T : Patient
+    public interface IRoleRepository<T> : IDisposable
+        where T : Role
     {
-        IEnumerable<Patient> GetPatientList();
-        Patient GetPatient(int id);
-        void Create(Patient patient);
-        void Update(Patient patient);
+        IEnumerable<Role> GetRoleList();
+        Role GetRole(int id);
+        void Create(Role role);
+        void Update(Role role);
         void Delete(int id);
     }
 }

@@ -10,9 +10,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BookingAppointment.Business.Services\BookingAppointment.Business.Services.csproj" />
     <ProjectReference Include="..\BookingAppointment.Domain.Core\BookingAppointment.Domain.Core.csproj" />
     <ProjectReference Include="..\BookingAppointment.Infrastructure.Data\BookingAppointment.Infrastructure.Data.csproj" />
   </ItemGroup>

@@ -8,10 +8,27 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    @{ if (User.Identity.IsAuthenticated)
+        {
+            <div>
+                @User.Identity.Name
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <input type="submit" value="Вийти" />
+                </form>
+            </div>
+        }
+        else
+        {
+            <div>
+                <a asp-controller="Account" asp-action="Registration">Реєстрація</a>
+                <a asp-controller="Account" asp-action="Login">Увійти</a>
+            </div>
+        }
+    }
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BookingAppointment</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Medical Appointment</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -19,10 +36,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Головна</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Appointment" asp-action="Index">Записи до лікаря</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Конфіденційність</a>
                         </li>
                     </ul>
                 </div>

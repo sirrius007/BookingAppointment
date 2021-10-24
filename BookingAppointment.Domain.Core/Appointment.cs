@@ -15,7 +15,7 @@ namespace BookingAppointment.Domain.Core
         public int PriceOfAppointment { get; set; }
         public string PlaceOfAppointment { get; set; }
         public string SummaryOfAppointment { get; set; }
-        public int PatientId { get; set; }
-        public Patient Patient { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

@@ -1,6 +1,8 @@
+using BookingAppointment.Business.Services;
 using BookingAppointment.Domain.Core;
 using BookingAppointment.Domain.Interfaces;
 using BookingAppointment.Infrastructure.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,8 +31,18 @@ namespace BookingAppointment
         {
             services.AddControllersWithViews();
             services.AddDbContext<BookingAppointmentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dbconn")));
-            services.AddTransient<IPatientRepository<Patient>, PatientRepository>();
+            services.AddTransient<IUserRepository<User>, UserRepository>();
+            services.AddTransient<IRoleRepository<Role>, RoleRepository>();
             services.AddTransient<IAppointmentRepository<Appointment>, AppointmentRepository>();
+            services.AddTransient<IAppointmentManager, AppointmentManager>();
+            services.AddTransient<IUserManager, UserManager>();
+            services.AddTransient<IRoleManager, RoleManager>();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                    options.AccessDeniedPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +64,7 @@ namespace BookingAppointment
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

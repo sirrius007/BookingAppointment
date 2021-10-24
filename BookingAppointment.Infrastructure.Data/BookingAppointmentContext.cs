@@ -10,8 +10,9 @@ namespace BookingAppointment.Infrastructure.Data
 {
     public class BookingAppointmentContext : DbContext
     {
-        public DbSet<Patient> Patients { get; set; }
+        public DbSet<User> Users { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public BookingAppointmentContext(DbContextOptions<BookingAppointmentContext> options) : base(options)
         { }
     }
