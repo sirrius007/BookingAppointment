@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly IUserManager _userManager;
@@ -88,6 +90,25 @@ namespace BookingAppointment.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public IActionResult UserDetails()
+        {
+            DetailsUserDTO userDTO = _userManager.GetUserInfo(User.Identity.Name).ToUserDetailsDTO();
+            return View(userDTO);
+        }
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            EditUserDTO userDTO = _userManager.GetUserByUserName(User.Identity.Name).ToUserEditDTO();
+            return View(userDTO);
+        }
+        [HttpPost]
+        public IActionResult Edit(EditUserDTO userDTO)
+        {
+            User user = userDTO.ToUser();
+            _userManager.UpdateUser(user, User.Identity.Name);
+            return RedirectToAction("UserDetails");
         }
     }
 }

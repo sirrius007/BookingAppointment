@@ -4,14 +4,16 @@ using BookingAppointment.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookingAppointment.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(BookingAppointmentContext))]
-    partial class BookingAppointmentContextModelSnapshot : ModelSnapshot
+    [Migration("20211025131058_FixedDbAndAddedDateOfBurnToUser")]
+    partial class FixedDbAndAddedDateOfBurnToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.Controllers
 {
+    [ApiController]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentManager _appointmentManager;

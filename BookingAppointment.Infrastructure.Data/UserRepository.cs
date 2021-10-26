@@ -24,6 +24,11 @@ namespace BookingAppointment.Infrastructure.Data
         {
             return _db.Users.Include(u => u.Role);
         }
+        public User GetUserWithRoleAndAppointments(string userName)
+        {
+            var user = _db.Users.Include(u => u.Role).Include(u => u.Appointments).FirstOrDefault(u => u.UserName == userName);
+            return user;
+        }
         public User GetUser(int id)
         {
             return _db.Users.Find(id);

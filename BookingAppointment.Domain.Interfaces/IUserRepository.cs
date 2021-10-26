@@ -16,5 +16,6 @@ namespace BookingAppointment.Domain.Interfaces
         void Create(User user);
         void Update(User user);
         void Delete(int id);
+        User GetUserWithRoleAndAppointments(string userName);
     }
 }

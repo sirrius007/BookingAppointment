@@ -11,7 +11,7 @@
     @{ if (User.Identity.IsAuthenticated)
         {
             <div>
-                @User.Identity.Name
+                    <a asp-controller="Account" asp-action="UserDetails">@User.Identity.Name</a>
                 <form method="post" asp-controller="Account" asp-action="Logout">
                     <input type="submit" value="Вийти" />
                 </form>

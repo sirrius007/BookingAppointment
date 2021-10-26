@@ -27,15 +27,22 @@ namespace BookingAppointment.Business.Services
         {
             return _userRepository.GetUser(id);
         }
-        public void UpdateUser(User user)
+        public void UpdateUser(User userUpdated, string userName)
         {
-            _userRepository.Update(user);
+            User userExisted = GetUserByUserName(userName);
+            userExisted.FirstName = userUpdated.FirstName;
+            userExisted.MiddleName = userUpdated.MiddleName;
+            userExisted.LastName = userUpdated.LastName;
+            userExisted.DateOfBorn = userUpdated.DateOfBorn;
+            userExisted.Phone = userUpdated.Phone;
+            userExisted.Email = userUpdated.Email;
+            _userRepository.Update(userExisted);
         }
         public void RemoveUser(User user)
         {
             _userRepository.Delete(user.Id);
         }
-        private User GetUserByUserName(string userName)
+        public User GetUserByUserName(string userName)
         {
             return _userRepository.GetUserList().FirstOrDefault(u => u.UserName == userName);
         }
@@ -47,6 +54,10 @@ namespace BookingAppointment.Business.Services
         {
             return _userRepository.GetUsersWithRoles()
                         .FirstOrDefault(u => u.UserName == userName && u.Password == password);
+        }
+        public User GetUserInfo(string userName)
+        {
+            return _userRepository.GetUserWithRoleAndAppointments(userName);
         }
     }
 }

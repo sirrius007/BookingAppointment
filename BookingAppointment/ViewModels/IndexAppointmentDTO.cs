@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.ViewModels
 {
-    [Keyless]
     public class IndexAppointmentDTO
     {
         [Display(Name = "Номер запису")]

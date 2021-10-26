@@ -12,9 +12,11 @@ namespace BookingAppointment.Domain.Interfaces
         List<User> GetAllUsers();
         void CreateUser(User user);
         User GetUser(int id);
-        void UpdateUser(User user);
+        void UpdateUser(User user, string userName);
         void RemoveUser(User user);
         bool IsExist(string userName);
         User GetLoggedUser(string userName, string password);
+        User GetUserInfo(string userName);
+        User GetUserByUserName(string userName);
     }
 }

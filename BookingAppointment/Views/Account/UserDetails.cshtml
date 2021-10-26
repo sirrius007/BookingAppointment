@@ -1,0 +1,129 @@
+﻿@model BookingAppointment.ViewModels.DetailsUserDTO
+
+@{
+    ViewData["Title"] = "UserDetails";
+}
+
+<h1>Профіль користувача</h1>
+
+<div>
+    <h4>Особисті дані</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Role.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBorn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfBorn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PatientHistory)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PatientHistory)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Account" asp-action="Edit">Внести зміни</a>
+</div>
+<table class="table">
+    <thead>
+            <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].FormatOfAppointment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].PriceOfAppointment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].PlaceOfAppointment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointments[0].SummaryOfAppointment)
+            </th>
+            </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model.Appointments)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(a => appointment.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(a => appointment.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(a => appointment.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(a => appointment.FormatOfAppointment)
+            </td>
+            <td>
+                @Html.DisplayFor(a => appointment.PriceOfAppointment)
+            </td>
+            <td>
+                @Html.DisplayFor(a => appointment.PlaceOfAppointment)
+            </td>
+            <td>
+                @Html.DisplayFor(a => appointment.SummaryOfAppointment)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+    <div>
+        <a asp-controller="Home" asp-action="Index">На головну</a>
+    </div>
