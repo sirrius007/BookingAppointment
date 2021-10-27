@@ -2,6 +2,7 @@
 using BookingAppointment.Domain.Interfaces;
 using BookingAppointment.ExtensionMethods;
 using BookingAppointment.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,14 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.Controllers
 {
-    [ApiController]
     public class AppointmentController : Controller
     {
         private readonly IAppointmentManager _appointmentManager;
-        public AppointmentController(IAppointmentManager appointmentManager)
+        private readonly IUserManager _userManager;
+        public AppointmentController(IAppointmentManager appointmentManager, IUserManager userManager)
         {
             _appointmentManager = appointmentManager;
+            _userManager = userManager;
         }
         [HttpGet]
         public IActionResult Index()
@@ -36,7 +38,7 @@ namespace BookingAppointment.Controllers
         public IActionResult Create(CreateAppointmentDTO appointmentDTO)
         {
             Appointment appointment = appointmentDTO.ToAppointment();
-            appointment.UserId = 2;
+            appointment.UserId = _userManager.GetUserByUserName(User.Identity.Name).Id;
             _appointmentManager.CreateAppointment(appointment);
             return RedirectToAction("Index");
         }
@@ -56,7 +58,7 @@ namespace BookingAppointment.Controllers
         public IActionResult Edit(EditAppointmentDTO appointmentDTO)
         {
             Appointment appointment = appointmentDTO.ToAppoinment();
-            appointment.UserId = 2;
+            appointment.UserId = _userManager.GetUserByUserName(User.Identity.Name).Id;
             _appointmentManager.UpdateAppointment(appointment);
             return RedirectToAction("Details", new { id = appointmentDTO.Id });
         }
@@ -69,9 +71,9 @@ namespace BookingAppointment.Controllers
         [HttpPost]
         public IActionResult Remove(RemoveAppointmentDTO appointmentDTO)
         {
-            Appointment appointment = appointmentDTO.ToAppointment();
-            _appointmentManager.RemoveAppointment(appointment);
-            return RedirectToAction("Index");
+                Appointment appointment = appointmentDTO.ToAppointment();
+                _appointmentManager.RemoveAppointment(appointment);
+                return RedirectToAction("Index");
         }
     }
 }

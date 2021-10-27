@@ -11,17 +11,32 @@ namespace BookingAppointment.Business.Services
     public class UserManager : IUserManager
     {
         private readonly IUserRepository<User> _userRepository;
-        public UserManager(IUserRepository<User> userRepository)
+        private readonly IRoleManager _roleManager;
+        public UserManager(IUserRepository<User> userRepository, IRoleManager roleManager)
         {
             _userRepository = userRepository;
+            _roleManager = roleManager;
         }
         public List<User> GetAllUsers()
         {
             return _userRepository.GetUserList().ToList();
         }
-        public void CreateUser(User user)
+        public User CreateUser(string userName, User user)
         {
+            if (IsExist(userName))
+            {
+                throw new ArgumentException("Некоректні логін та(або) пароль");
+            }
+
+            Role userRole = _roleManager.GetRoleByRoleNameUser();
+            if (userRole != null)
+                user.Role = userRole;
             _userRepository.Create(user);
+            return user;
+        }
+        private bool IsExist(string userName)
+        {
+            return _userRepository.IsExist(userName);
         }
         public User GetUser(int id)
         {
@@ -45,10 +60,6 @@ namespace BookingAppointment.Business.Services
         public User GetUserByUserName(string userName)
         {
             return _userRepository.GetUserList().FirstOrDefault(u => u.UserName == userName);
-        }
-        public bool IsExist(string userName)
-        {
-            return GetUserByUserName(userName) != null ? true : false;
         }
         public User GetLoggedUser(string userName, string password)
         {

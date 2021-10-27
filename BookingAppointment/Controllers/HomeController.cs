@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.Controllers
 {
-    [ApiController]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

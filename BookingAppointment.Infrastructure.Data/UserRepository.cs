@@ -33,6 +33,10 @@ namespace BookingAppointment.Infrastructure.Data
         {
             return _db.Users.Find(id);
         }
+        public bool IsExist(string userName)
+        {
+            return _db.Users.Any(u => u.UserName == userName);
+        }
         public void Create(User patient)
         {
             _db.Users.Add(patient);

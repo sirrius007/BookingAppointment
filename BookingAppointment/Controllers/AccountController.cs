@@ -13,16 +13,12 @@ using System.Threading.Tasks;
 
 namespace BookingAppointment.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class AccountController : Controller
     {
         private readonly IUserManager _userManager;
-        private readonly IRoleManager _roleManager;
-        public AccountController(IUserManager userManager, IRoleManager roleManager)
+        public AccountController(IUserManager userManager)
         {
             _userManager = userManager;
-            _roleManager = roleManager;
         }
         private async Task Authenticate(User user)
         {
@@ -48,19 +44,21 @@ namespace BookingAppointment.Controllers
             if (!ModelState.IsValid)
                 return View("Registration", userDTO);
 
-            if (_userManager.IsExist(userDTO.UserName))
+            User user;
+            try
             {
-                ModelState.AddModelError("", "Некоректні логін та(або) пароль");
+                user = _userManager.CreateUser(
+                    userDTO.UserName,
+                    userDTO.ToUser());
+            }
+            catch (ArgumentException e)
+            {
+                ModelState.AddModelError("", $"{e.Message}");
                 return View("Registration", userDTO);
             }
 
-            User user = userDTO.ToUser();
-            Role userRole = _roleManager.GetRoleByRoleNameUser();
-            if (userRole != null)
-                user.Role = userRole;
-            _userManager.CreateUser(user);
             await Authenticate(user);
-            return RedirectToAction("Index", "Appointment");
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public IActionResult Login()
@@ -78,7 +76,7 @@ namespace BookingAppointment.Controllers
                 {
                     await Authenticate(user);
 
-                    return RedirectToAction("Index", "Appointment");
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Некоректний логін та/або пароль");
             }

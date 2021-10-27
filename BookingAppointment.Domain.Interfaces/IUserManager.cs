@@ -10,11 +10,10 @@ namespace BookingAppointment.Domain.Interfaces
     public interface IUserManager
     {
         List<User> GetAllUsers();
-        void CreateUser(User user);
+        User CreateUser(string userName, User user);
         User GetUser(int id);
         void UpdateUser(User user, string userName);
         void RemoveUser(User user);
-        bool IsExist(string userName);
         User GetLoggedUser(string userName, string password);
         User GetUserInfo(string userName);
         User GetUserByUserName(string userName);

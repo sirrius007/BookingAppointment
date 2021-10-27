@@ -13,6 +13,7 @@ namespace BookingAppointment.Domain.Interfaces
         IEnumerable<User> GetUserList();
         IEnumerable<User> GetUsersWithRoles();
         User GetUser(int id);
+        bool IsExist(string userName);
         void Create(User user);
         void Update(User user);
         void Delete(int id);
