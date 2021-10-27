@@ -37,6 +37,8 @@ namespace BookingAppointment.Controllers
         [HttpPost]
         public IActionResult Create(CreateAppointmentDTO appointmentDTO)
         {
+            if (!ModelState.IsValid)
+                return View("Create", appointmentDTO);
             Appointment appointment = appointmentDTO.ToAppointment();
             appointment.UserId = _userManager.GetUserByUserName(User.Identity.Name).Id;
             _appointmentManager.CreateAppointment(appointment);

@@ -33,7 +33,7 @@ namespace BookingAppointment.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Помилка отримання даних з бази даних");
+                    "Помилка отримання даних");
             }
         }
         [HttpPost]
@@ -41,7 +41,7 @@ namespace BookingAppointment.Controllers
         {
             try
             {
-                if (appointmentDTO == null)
+                if (!ModelState.IsValid)
                     return BadRequest();
                 Appointment appointment = appointmentDTO.ToAppointment();
                 appointment.UserId = 2;

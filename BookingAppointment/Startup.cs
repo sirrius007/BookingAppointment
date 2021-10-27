@@ -34,10 +34,14 @@ namespace BookingAppointment
             services.AddDbContext<BookingAppointmentContext>(options => options.UseSqlServer(Configuration.GetConnectionString("dbconn")));
             services.AddTransient<IUserRepository<User>, UserRepository>();
             services.AddTransient<IRoleRepository<Role>, RoleRepository>();
+            services.AddTransient<IDoctorRepository<Doctor>, DoctorRepository>();
+            services.AddTransient<IScheduleRepository<Schedule>, ScheduleRepository>();
             services.AddTransient<IAppointmentRepository<Appointment>, AppointmentRepository>();
             services.AddTransient<IAppointmentManager, AppointmentManager>();
             services.AddTransient<IUserManager, UserManager>();
             services.AddTransient<IRoleManager, RoleManager>();
+            services.AddTransient<IDoctorManager, DoctorManager>();
+            services.AddTransient<IScheduleManager, ScheduleManager>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
